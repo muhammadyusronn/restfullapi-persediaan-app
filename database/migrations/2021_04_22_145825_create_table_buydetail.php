@@ -13,7 +13,7 @@ class CreateTableBuydetail extends Migration
      */
     public function up()
     {
-        Schema::create('buydetail', function (Blueprint $table) {
+        Schema::create('buydetails', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('buy_id');
             $table->unsignedInteger('barang_id');
@@ -21,7 +21,7 @@ class CreateTableBuydetail extends Migration
             $table->integer('hargabeli');
             $table->timestamps();
 
-            $table->foreign('buy_id')->references('id')->on('buy')
+            $table->foreign('buy_id')->references('id')->on('buys')
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('barang_id')->references('id')->on('items')
                 ->onUpdate('cascade')->onDelete('cascade');
@@ -35,6 +35,6 @@ class CreateTableBuydetail extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buydetail');
+        Schema::dropIfExists('buydetails');
     }
 }

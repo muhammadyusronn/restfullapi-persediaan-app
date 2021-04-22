@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableBuy extends Migration
+class CreateTableSelldetails extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,16 @@ class CreateTableBuy extends Migration
      */
     public function up()
     {
-        Schema::create('buys', function (Blueprint $table) {
+        Schema::create('selldetails', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('kodetransaksi', '10')->unique();
-            $table->date('tanggaltransaksi');
-            $table->integer('totaltransaksi');
-            $table->unsignedInteger('supplier_id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedInteger('sell_id');
+            $table->unsignedInteger('barang_id');
+            $table->integer('jumlahkeluar');
             $table->timestamps();
 
-            $table->foreign('supplier_id')->references('id')->on('suppliers')
+            $table->foreign('sell_id')->references('id')->on('sells')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')
+            $table->foreign('barang_id')->references('id')->on('items')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
     }
@@ -36,6 +34,6 @@ class CreateTableBuy extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buys');
+        Schema::dropIfExists('selldetails');
     }
 }
