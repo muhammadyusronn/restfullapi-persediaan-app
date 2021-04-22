@@ -15,7 +15,7 @@ class CreateTableCategories extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('kodekategori', '10');
+            $table->string('kodekategori', '10')->unique();
             $table->string('namakategori', '50');
             $table->timestamps();
         });

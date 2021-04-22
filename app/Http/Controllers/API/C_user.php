@@ -23,7 +23,7 @@ class C_user extends Controller
             ], 200);
         } catch (Exception $e) {
             // do task when error
-            echo $e->getMessage();   // insert query
+            return $e->getMessage();   // insert query
         }
     }
 
@@ -46,7 +46,7 @@ class C_user extends Controller
             ], 200);
         } catch (\Exception $e) {
             // do task when error
-            echo $e->getMessage();   // insert query
+            return $e->getMessage();   // insert query
         }
     }
 
@@ -75,7 +75,7 @@ class C_user extends Controller
                 'token'     =>  $token,
             ], 200);
         } catch (Exception $e) {
-            $e->getMessage();
+            return $e->getMessage();
         }
     }
 
