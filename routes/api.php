@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\C_categories;
 use App\Http\Controllers\API\C_items;
+use App\Http\Controllers\API\C_supplier;
 use App\Http\Controllers\API\C_user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,12 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/items/detail/{id}', [C_items::class, 'detail']);   // Detail Items
     Route::post('items/update', [C_items::class, 'update']);    // Update Items
     Route::get('items/delete/{id}', [C_items::class, 'delete']);    // Delete Items
+    // Supplier
+    Route::get('/supplier', [C_supplier::class, 'all_data']); // Get All Data supplier
+    Route::post('/supplier/create', [C_supplier::class, 'create']);   // Create supplier
+    Route::get('/supplier/detail/{id}', [C_supplier::class, 'detail']);   // Detail supplier
+    Route::post('supplier/update', [C_supplier::class, 'update']);    // Update supplier
+    Route::get('supplier/delete/{id}', [C_supplier::class, 'delete']);    // Delete supplier
 });
 
 Route::post('/user/register', [C_user::class, 'register']);
