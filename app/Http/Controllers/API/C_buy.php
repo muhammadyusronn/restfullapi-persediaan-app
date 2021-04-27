@@ -169,7 +169,7 @@ class C_buy extends Controller
         $kode = $character;
         $noUrut = (int) substr($kode, 3, 3);
         $noUrut++;
-        $kode = 'PJL' . sprintf("%03s", $noUrut);
+        $kode = 'PMB' . sprintf("%03s", $noUrut);
         return ($kode);
     }
 }

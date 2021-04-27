@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\C_buy;
 use App\Http\Controllers\API\C_categories;
 use App\Http\Controllers\API\C_items;
+use App\Http\Controllers\API\C_sell;
 use App\Http\Controllers\API\C_supplier;
 use App\Http\Controllers\API\C_user;
 use Illuminate\Http\Request;
@@ -37,10 +38,20 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('buy/create', [C_buy::class, 'create']); // Create buy's transaction
     Route::get('buy/detail/{id}', [C_buy::class, 'detail']); // Detail buy's transaction
 
-    Route::get('/cart', [C_buy::class, 'cart_show']); // show Cart
-    Route::post('/cart/create', [C_buy::class, 'cart_create']); // Add Cart
-    Route::get('/cart/delete/{id}', [C_buy::class, 'cart_delete']); // Cancel Cart
-    Route::get('/cart/cancel', [C_buy::class, 'cart_cancel']); // Cancel Cart
+    Route::get('buy/cart', [C_buy::class, 'cart_show']); // show Cart
+    Route::post('buy/cart/create', [C_buy::class, 'cart_create']); // Add Cart
+    Route::get('buy/cart/delete/{id}', [C_buy::class, 'cart_delete']); // Cancel Cart
+    Route::get('buy/cart/cancel', [C_buy::class, 'cart_cancel']); // Cancel Cart
+
+    // Sells
+    Route::get('sell', [C_sell::class, 'all_data']); // Show sell's transaction
+    Route::post('sell/create', [C_sell::class, 'create']); // Create sell's transaction
+    Route::get('sell/detail/{id}', [C_sell::class, 'detail']); // Detail sell's transaction
+
+    Route::get('sell/cart', [C_sell::class, 'cart_show']); // show Cart
+    Route::post('sell/cart/create', [C_sell::class, 'cart_create']); // Add Cart
+    Route::get('sell/cart/delete/{id}', [C_sell::class, 'cart_delete']); // Cancel Cart
+    Route::get('sell/cart/cancel', [C_sell::class, 'cart_cancel']); // Cancel Cart
 });
 
 Route::post('/user/register', [C_user::class, 'register']);
