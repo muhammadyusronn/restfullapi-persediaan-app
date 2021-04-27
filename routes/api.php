@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\C_buy;
 use App\Http\Controllers\API\C_categories;
 use App\Http\Controllers\API\C_items;
 use App\Http\Controllers\API\C_supplier;
@@ -30,6 +31,16 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/supplier/detail/{id}', [C_supplier::class, 'detail']);   // Detail supplier
     Route::post('supplier/update', [C_supplier::class, 'update']);    // Update supplier
     Route::get('supplier/delete/{id}', [C_supplier::class, 'delete']);    // Delete supplier
+
+    // buys
+    Route::get('buy', [C_buy::class, 'all_data']); // Show buy's transaction
+    Route::post('buy/create', [C_buy::class, 'create']); // Create buy's transaction
+    Route::get('buy/detail/{id}', [C_buy::class, 'detail']); // Detail buy's transaction
+
+    Route::get('/cart', [C_buy::class, 'cart_show']); // show Cart
+    Route::post('/cart/create', [C_buy::class, 'cart_create']); // Add Cart
+    Route::get('/cart/delete/{id}', [C_buy::class, 'cart_delete']); // Cancel Cart
+    Route::get('/cart/cancel', [C_buy::class, 'cart_cancel']); // Cancel Cart
 });
 
 Route::post('/user/register', [C_user::class, 'register']);
